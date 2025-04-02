@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Hydro-Aether Sentinel</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-water"></i> Hydro-Aether Sentinel</div>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="data-analysis.html"><i class="fas fa-microscope"></i> Data Analysis</a></li>
+            <li><a href="visualization.html"><i class="fas fa-cube"></i> 3D View</a></li>
+            <li><a href="predictions.html"><i class="fas fa-brain"></i> ML Insights</a></li>
+            <li><a href="alerts.html"><i class="fas fa-bell"></i> Alerts</a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        <div id="errorMessage" class="error-message"></div>
+        <form id="contactForm" onsubmit="return handleSubmit(event)">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <textarea id="message" placeholder="Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <script src="js/contact.js"></script>
+</body>
+</html>

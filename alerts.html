@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts - Hydro-Aether Sentinel</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-water"></i> Hydro-Aether Sentinel</div>
+        <ul>
+            <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="data-analysis.html"><i class="fas fa-microscope"></i> Data Analysis</a></li>
+            <li><a href="visualization.html"><i class="fas fa-cube"></i> 3D View</a></li>
+            <li><a href="predictions.html"><i class="fas fa-brain"></i> ML Insights</a></li>
+            <li><a href="alerts.html" class="active"><i class="fas fa-bell"></i> Alerts</a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <h1>System Alerts</h1>
+        <div class="alerts-container">
+            <div class="alerts-filters">
+                <select id="severity-filter">
+                    <option value="all">All Severities</option>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+                <button id="clear-all">Clear All</button>
+            </div>
+            <div id="alerts-list">
+                <!-- Alerts will be dynamically populated here -->
+            </div>
+        </div>
+    </main>
+
+    <script src="js/alerts.js"></script>
+</body>
+</html>

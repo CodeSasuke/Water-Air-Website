@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Visualization - Hydro-Aether Sentinel</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/visualization.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-water"></i> Hydro-Aether Sentinel</div>
+        <ul>
+            <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="data-analysis.html"><i class="fas fa-microscope"></i> Data Analysis</a></li>
+            <li><a href="visualization.html"><i class="fas fa-cube"></i> 3D View</a></li>
+            <li><a href="predictions.html"><i class="fas fa-brain"></i> ML Insights</a></li>
+            <li><a href="alerts.html"><i class="fas fa-bell"></i> Alerts</a></li>
+            <li><a href="settings.html" class="active"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="visualization-container">
+        <div class="controls-panel">
+            <div class="panel-header">
+                <h2><i class="fas fa-sliders-h"></i> Control Panel</h2>
+                <span class="status-badge online">System Online</span>
+            </div>
+            
+            <div class="control-group">
+                <label for="qualitySelector">
+                    <i class="fas fa-flask"></i> Water Quality
+                    <span class="label-hint">Select water quality to visualize</span>
+                </label>
+                <select id="qualitySelector">
+                    <option value="excellent">Excellent</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="poor">Poor</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="flowRate">
+                    <i class="fas fa-faucet"></i> Flow Rate
+                    <span class="label-hint">Adjust water flow speed</span>
+                </label>
+                <div class="range-container">
+                    <input type="range" id="flowRate" min="0" max="100" value="50" class="styled-range">
+                    <span class="range-value" id="flowRateValue">50%</span>
+                </div>
+            </div>
+
+            <div class="view-controls">
+                <button id="cameraLeft" class="control-btn" title="Rotate Left">
+                    <i class="fas fa-undo"></i>
+                </button>
+                <button id="cameraReset" class="control-btn primary" title="Reset View">
+                    <i class="fas fa-sync"></i>
+                </button>
+                <button id="cameraRight" class="control-btn" title="Rotate Right">
+                    <i class="fas fa-redo"></i>
+                </button>
+            </div>
+
+            <div class="quality-parameters">
+                <h3><i class="fas fa-chart-bar"></i> Quality Parameters</h3>
+                <div class="parameter">
+                    <span>pH Level:</span>
+                    <span id="phValue">7.0</span>
+                </div>
+                <div class="parameter">
+                    <span>Turbidity:</span>
+                    <span id="turbidityValue">0.5 NTU</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="model-container">
+            <div class="model-header">
+                <h2><i class="fas fa-cube"></i> 3D Water Flow Visualization</h2>
+                <div class="view-mode">
+                    <button class="mode-btn active"><i class="fas fa-lightbulb"></i> Light</button>
+                    <button class="mode-btn"><i class="fas fa-moon"></i> Dark</button>
+                </div>
+            </div>
+            
+            <div id="modelView" class="model-view">
+                <div id="loadingIndicator" class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Loading 3D Model...</span>
+                </div>
+            </div>
+            
+            <div class="stats-panel">
+                <div class="stat-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <div class="stat-info">
+                        <span class="stat-label">Pressure</span>
+                        <span class="stat-value" id="pressureValue">1.5 bar</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-thermometer-half"></i>
+                    <div class="stat-info">
+                        <span class="stat-label">Temperature</span>
+                        <span class="stat-value" id="tempValue">24°C</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/visualization.js"></script>
+</body>
+</html>
