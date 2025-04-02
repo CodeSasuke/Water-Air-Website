@@ -6,6 +6,7 @@
     <title>ML Insights - Hydro-Aether Sentinel</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -23,17 +24,85 @@
         </ul>
     </nav>
 
-        <div class="anomaly-section">
-            <h2><i class="fas fa-exclamation-triangle"></i> Anomaly Detection</h2>
-            <div id="anomalyContainer" class="anomaly-grid">
-                <!-- Anomalies will be displayed here -->
+    <div class="container">
+        <div class="predictions-dashboard">
+            <!-- Add Model Controls Section -->
+            <div class="model-controls">
+                <h2><i class="fas fa-sliders-h"></i> Model Controls</h2>
+                <div class="control-panel">
+                    <select id="modelSelector" class="model-select">
+                        <option value="water">Water Quality Prediction</option>
+                        <option value="air">Air Quality Prediction</option>
+                        <option value="anomaly">Anomaly Detection</option>
+                    </select>
+                    <button id="trainModel" class="train-btn">
+                        <i class="fas fa-sync"></i> Train Model
+                    </button>
+                </div>
+            </div>
+
+            <!-- Replace current-readings section -->
+            <div class="current-readings">
+                <h2><i class="fas fa-sensor"></i> Real-time Predictions</h2>
+                <div class="sensor-grid">
+                    <div class="sensor-card prediction">
+                        <h3>Air Quality Prediction</h3>
+                        <div class="reading" id="airQuality">Loading...</div>
+                        <div class="confidence">Confidence: <span id="airConfidence">0</span>%</div>
+                        <div class="status" id="airQualityStatus"></div>
+                    </div>
+                    <div class="sensor-card prediction">
+                        <h3>TDS Prediction</h3>
+                        <div class="reading" id="tdsValue">Loading...</div>
+                        <div class="confidence">Confidence: <span id="tdsConfidence">0</span>%</div>
+                        <div class="status" id="tdsStatus"></div>
+                    </div>
+                    <div class="sensor-card prediction">
+                        <h3>Anomaly Detection</h3>
+                        <div class="reading" id="anomalyScore">Loading...</div>
+                        <div class="threshold">Threshold: <span id="anomalyThreshold">0.5</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add ML Insights Section -->
+            <div class="insights-section">
+                <h2><i class="fas fa-lightbulb"></i> ML Insights</h2>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h3>Feature Importance</h3>
+                        <canvas id="featureChart"></canvas>
+                    </div>
+                    <div class="insight-card">
+                        <h3>Model Performance</h3>
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keep existing trends and anomaly sections -->
+            <div class="trends-section">
+                <h2><i class="fas fa-chart-line"></i> Historical Trends</h2>
+                <canvas id="trendsChart"></canvas>
+            </div>
+
+            <div class="anomaly-section">
+                <h2><i class="fas fa-exclamation-triangle"></i> Alerts</h2>
+                <div id="anomalyContainer" class="anomaly-grid"></div>
+            </div>
+
+            <!-- Add new prediction card -->
+            <div class="prediction-card">
+                <h3>Tomorrow's Air Quality Prediction</h3>
+                <div class="reading" id="airQuality">Loading...</div>
+                <div class="confidence">Pattern Confidence: <span id="airConfidence">0</span>%</div>
+                <div class="chart-container">
+                    <canvas id="trendsChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
 
-    <script src="js/ml/timeSeriesPredictor.js"></script>
-    <script src="js/ml/anomalyDetector.js"></script>
-    <script src="js/ml/waterQualityPredictor.js"></script>
     <script src="js/predictions.js"></script>
 </body>
 </html>

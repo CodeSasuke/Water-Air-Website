@@ -258,6 +258,28 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(getWeatherData, 300000); // Update every 5 minutes
     // Initialize dashboard components
     initializeDashboard();
+    
+    const themeToggle = document.getElementById('themeToggle');
+    // Check localStorage for saved theme
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    if (currentTheme === 'light') {
+        document.body.classList.add('light-theme');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
+        const newTheme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
+        localStorage.setItem('theme', newTheme);
+    });
+    
+    // Optionally, update theme based on live environmental data
+    // For example, if outdoor brightness is high, switch to light theme:
+    // axios.get('your/light/sensor/API').then(res => {
+    //    if (res.data.brightness > threshold) {
+    //       document.body.classList.add('light-theme');
+    //       localStorage.setItem('theme', 'light');
+    //       }
+    // });
 });
 
 function initializeDashboard() {

@@ -14,7 +14,8 @@
     <nav class="navbar">
         <div class="logo"><i class="fas fa-water"></i> Hydro-Aether Sentinel</div>
         <ul>
-            <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="dashboard.html" class="active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="ocean.html"><i class="fas fa-water"></i> Ocean View</a></li>
             <li><a href="data-analysis.html"><i class="fas fa-microscope"></i> Data Analysis</a></li>
             <li><a href="visualization.html"><i class="fas fa-cube"></i> 3D View</a></li>
             <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
@@ -164,5 +165,17 @@
         </div>
     </div>
     <script src="js/dashboard.js"></script>
+    <script>
+        // Check if user is logged in
+        if (!localStorage.getItem('isLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+        
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            window.location.href = 'login.html';
+        }
+    </script>
 </body>
 </html>
